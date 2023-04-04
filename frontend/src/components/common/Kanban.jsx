@@ -155,7 +155,7 @@ const Kanban = props => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        marginBottom: '10px'
+                        marginBottom: '10px',
                       }}>
                         <TextField
                           value={section.title}
