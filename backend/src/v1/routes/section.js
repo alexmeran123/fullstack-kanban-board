@@ -1,8 +1,10 @@
-const router = require('express').Router({ mergeParams: true })
-const { param } = require('express-validator')
-const tokenHandler = require('../handlers/tokenHandler')
-const sectionController = require('../controllers/section')
-const validation = require('../handlers/validation')
+import { param } from 'express-validator'
+import * as tokenHandler from '../handlers/tokenHandler.js'
+import * as sectionController from '../controllers/section.js'
+import * as validation from '../handlers/validation.js'
+import Router from 'express'
+
+const router = Router({ mergeParams: true })
 
 router.post(
   '/',
@@ -47,7 +49,7 @@ router.delete(
   }),
   validation.validate,
   tokenHandler.verifyToken,
-  sectionController.delete
+  sectionController.deleteSection
 )
 
-module.exports = router
+export default router

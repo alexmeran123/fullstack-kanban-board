@@ -1,9 +1,11 @@
-const router = require('express').Router()
-const userController = require('../controllers/user')
-const { body } = require('express-validator')
-const validation = require('../handlers/validation')
-const tokenHandler = require('../handlers/tokenHandler')
-const User = require('../models/user')
+import { Router } from 'express';
+import { body } from 'express-validator';
+import * as userController from '../controllers/user.js';
+import * as validation from '../handlers/validation.js';
+import * as tokenHandler from '../handlers/tokenHandler.js';
+import User from '../models/user.js';
+
+const router = Router();
 
 router.post(
   '/signup',
@@ -19,13 +21,13 @@ router.post(
   body('username').custom(value => {
     return User.findOne({ username: value }).then(user => {
       if (user) {
-        return Promise.reject('username already used')
+        return Promise.reject('username already used');
       }
-    })
+    });
   }),
   validation.validate,
   userController.register
-)
+);
 
 router.post(
   '/login',
@@ -37,14 +39,14 @@ router.post(
   ),
   validation.validate,
   userController.login
-)
+);
 
 router.post(
   '/verify-token',
   tokenHandler.verifyToken,
   (req, res) => {
-    res.status(200).json({ user: req.user })
+    res.status(200).json({ user: req.user });
   }
-)
+);
 
-module.exports = router
+export default router;

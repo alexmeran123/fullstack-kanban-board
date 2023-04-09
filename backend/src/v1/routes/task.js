@@ -1,8 +1,10 @@
-const router = require('express').Router({ mergeParams: true })
-const { param, body } = require('express-validator')
-const tokenHandler = require('../handlers/tokenHandler')
-const validation = require('../handlers/validation')
-const taskController = require('../controllers/task')
+import { param, body } from 'express-validator'
+import * as validation from '../handlers/validation.js'
+import * as tokenHandler from '../handlers/tokenHandler.js'
+import * as taskController from '../controllers/task.js'
+import Router from 'express'
+
+const router = Router({ mergeParams: true })
 
 router.post(
   '/',
@@ -47,7 +49,7 @@ router.delete(
   }),
   validation.validate,
   tokenHandler.verifyToken,
-  taskController.delete
+  taskController.deleteTask
 )
 
 router.put(
@@ -67,4 +69,4 @@ router.put(
   taskController.update
 )
 
-module.exports = router
+export default router

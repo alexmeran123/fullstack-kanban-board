@@ -1,6 +1,7 @@
-const mongoose = require('mongoose')
+import schemaOptions from './modelOptions.js'
+import mongoose from 'mongoose'
+
 const Schema = mongoose.Schema
-const { schemaOptions } = require('./modelOptions')
 
 const boardSchema = new Schema({
   user: {
@@ -35,4 +36,4 @@ const boardSchema = new Schema({
   }
 }, schemaOptions)
 
-module.exports = mongoose.model('Board', boardSchema)
+export default mongoose.model('Board', boardSchema)

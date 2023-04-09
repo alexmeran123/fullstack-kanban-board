@@ -1,0 +1,32 @@
+{
+  "name": "kanbanboard",
+  "version": "1.0.0",
+  "description": "Kanban Board App",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server",
+    "client": "yarn start --prefix frontend",
+    "dev": "concurrently \"yarn run server\" \"yarn run client\"",
+    "render-postbuild": "NPM_CONFIG_PRODUCTION=false yarn install --prefix frontend && yarn run build --prefix frontend"
+  },
+  "author": "Alex Meran",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.1",
+    "express": "~4.16.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.2",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1",
+    "nodemon": "^2.0.18"
+  }
+}

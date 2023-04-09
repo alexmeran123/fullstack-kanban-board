@@ -1,6 +1,7 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
+import schemaOptions from './modelOptions.js'
+
 const Schema = mongoose.Schema
-const { schemaOptions } = require('./modelOptions')
 
 const taskSchema = new Schema({
   section: {
@@ -21,4 +22,4 @@ const taskSchema = new Schema({
   }
 }, schemaOptions)
 
-module.exports = mongoose.model('Task', taskSchema)
+export default mongoose.model('Task', taskSchema)

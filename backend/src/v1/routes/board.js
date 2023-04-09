@@ -1,8 +1,10 @@
-const router = require('express').Router()
-const { param } = require('express-validator')
-const validation = require('../handlers/validation')
-const tokenHandler = require('../handlers/tokenHandler')
-const boardController = require('../controllers/board')
+import Router from 'express'
+import { param } from 'express-validator'
+import * as validation from '../handlers/validation.js'
+import * as tokenHandler from '../handlers/tokenHandler.js'
+import * as boardController from '../controllers/board.js'
+
+const router = Router();
 
 router.post(
   '/',
@@ -67,8 +69,8 @@ router.delete(
   }),
   validation.validate,
   tokenHandler.verifyToken,
-  boardController.delete
+  boardController.deleteBoard
 )
 
 
-module.exports = router
+export default router
